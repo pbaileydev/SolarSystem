@@ -27,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.text.Font;
 import javafx.animation.PathTransition;
 public class HomeScreen extends Application {
 
@@ -60,7 +61,6 @@ public class HomeScreen extends Application {
 		//Jupiter's Path
 		Button playButton = new Button();
 		playButton.setPrefSize(100,50);
-		playButton.setStyle("-fx-background-color:Green");
 		Button pauseButton = new Button();
 		pauseButton.setPrefSize(100, 50);
 		pauseButton.setStyle("-fx-background-color:Green");
@@ -82,10 +82,14 @@ public class HomeScreen extends Application {
 		int next = random.nextInt(arrayList.size()-1);
 		String planetInfo = "Did You Know?" + "\n" + arrayList.get(next).toString();
 		label.setText(planetInfo);
+		label.setFont(Font.font("Arial",18));
+		label.setTextFill(Color.ORANGE);
 		playButton.setText("Play");
 		pauseButton.setText("Pause");
 		VBox sidePanel = new VBox();
-		sidePanel.getChildren().addAll(playButton,pauseButton,label);
+		sidePanel.getChildren().addAll(label,playButton,pauseButton);
+		sidePanel.setSpacing(15);
+		label.setAlignment(Pos.TOP_CENTER);
 		playButton.setAlignment(Pos.CENTER);
 		pauseButton.setAlignment(Pos.CENTER);
 		Circle jupiterPath = new Circle();
@@ -93,8 +97,8 @@ public class HomeScreen extends Application {
 		jupiterPath.setStroke(Color.RED);
 		//Jupiter
 		Circle jupiter = new Circle();
-		jupiter.setRadius(20);
-		jupiter.setFill(Color.ORANGERED);
+		jupiter.setRadius(24);
+		jupiter.setFill(Color.CORNSILK);
 		//Mars' Path
 		
 		Circle marsPath = new Circle();
@@ -153,8 +157,8 @@ public class HomeScreen extends Application {
 		pane.getChildren().add(earth);
 		pane.getChildren().add(venusPath);
 		pane.getChildren().add(venus);
-		pane.getChildren().add(mercury);
 		pane.getChildren().add(mercuryPath);
+		pane.getChildren().add(mercury);
 		pane.getChildren().add(circle);
 		
 		final PathTransition mPath = new PathTransition();
